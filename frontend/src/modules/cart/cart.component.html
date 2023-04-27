@@ -9,8 +9,8 @@
   <app-cart-product *ngFor="let cartProduct of cartProducts" [cartProduct]="cartProduct"></app-cart-product>
 </div>
 
-<app-cart-form></app-cart-form>
+<app-cart-form *ngIf="cartProducts.length" (chosenCountryRate)="changeRate($event)"></app-cart-form>
 
 <div class="total-container">
-  <h2>Total: {{totalSum$ | async}} $</h2>
+  <h2>Total: {{totalSum$ | async | number:'1.0-2'}} {{countryCode$ | async | tuiCurrency}}</h2>
 </div>

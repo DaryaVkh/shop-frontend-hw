@@ -39,10 +39,6 @@ export class CartService {
     }
   }
 
-  private getCartProduct(productId: number): CartProduct | undefined {
-    return this.cart.find((item) => item.id === productId);
-  }
-
   public removeFromCart(productId: number): void {
     const product = this.getCartProduct(productId);
     const index = this.cart.findIndex((item) => item.id === productId)
@@ -50,5 +46,14 @@ export class CartService {
       this.cart.splice(index, 1);
       this.cartCount$.next(this.cartCount$.getValue() - product.count);
     }
+  }
+
+  public cleanCart(): void {
+    this.cart.splice(0);
+    this.cartCount$.next(0);
+  }
+
+  private getCartProduct(productId: number): CartProduct | undefined {
+    return this.cart.find((item) => item.id === productId);
   }
 }

@@ -23,7 +23,7 @@ export class ProductCardComponent implements OnDestroy {
               @Inject(TuiAlertService) private readonly alerts: TuiAlertService) {}
 
   public addToCart(): void {
-    this.alerts.open(`Product ${this.product.title} has been successfully added to cart!`).pipe(
+    this.alerts.open(`Product "${this.product.title}" has been successfully added to cart!`, {status: TuiNotification.Success}).pipe(
       take(1),
       takeUntil(this.destroy$)
     ).subscribe();
