@@ -1,0 +1,16 @@
+<div class="title-container">
+  <button tuiButton icon="tuiIconArrowLeft" size="s" appearance="secondary" (click)="backToProductsListPage()">
+    Back to products
+  </button>
+  <h1>Cart</h1>
+</div>
+
+<div class="cart-products-container">
+  <app-cart-product *ngFor="let cartProduct of cartProducts" [cartProduct]="cartProduct"></app-cart-product>
+</div>
+
+<app-cart-form></app-cart-form>
+
+<div class="total-container">
+  <h2>Total: </h2>
+</div>

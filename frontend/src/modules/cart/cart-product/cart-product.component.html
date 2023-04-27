@@ -1,0 +1,12 @@
+<div class="cart-product">
+  <img class="cart-product-image" [src]="cartProduct.imageUrl" [alt]="cartProduct.title">
+  <span class="cart-product-title">{{cartProduct.title | convertCase: 'title'}}</span>
+  <div class="cart-product-counter">
+    <div class="cart-product-price">{{cartProduct.price}} $</div>
+    <span>×</span>
+    <tui-input-number class="count-input" [formControl]="countControl" tuiTextfieldSize="s"></tui-input-number>
+    <span>=</span>
+    <div class="cart-product-sum">{{sum$ | async}} $</div>
+  </div>
+  <button class="cart-product-delete-button" tuiIconButton size="s" icon="tuiIconTrash2" appearance="secondary-destructive"></button>
+</div>
