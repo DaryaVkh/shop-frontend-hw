@@ -1,63 +1,63 @@
 .cart-product {
-  display: flex;
-  height: 72px;
+  align-items: center;
   border: 1px solid black;
   border-radius: 6px;
-  align-items: center;
+  display: flex;
+  height: 72px;
   padding: 0 12px;
 
   &-image {
-    height: 60px;
-    width: 60px;
-    border-radius: 12px;
-    background-repeat: no-repeat;
     background-position: top center;
+    background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 12px;
+    height: 60px;
     pointer-events: none;
     user-select: none;
+    width: 60px;
   }
 
   &-title {
-    margin-left: 12px;
-    font-weight: 600;
     font-size: 24px;
+    font-weight: 600;
     line-height: 26px;
+    margin-left: 12px;
   }
 
   &-counter {
-    display: flex;
     align-items: center;
-    gap: 8px;
+    display: flex;
     flex: 1;
+    gap: 8px;
     justify-content: flex-end;
   }
 
   &-price {
-    padding: 0 8px;
-    display: flex;
     align-items: center;
-    height: 32px;
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 500;
-    color: #FFFFFF;
     background-color: darkolivegreen;
-    white-space: nowrap;
     border-radius: 8px;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    height: 32px;
+    line-height: 20px;
+    padding: 0 8px;
+    white-space: nowrap;
   }
 
   &-sum {
-    padding: 0 10px;
-    display: flex;
     align-items: center;
-    height: 36px;
-    font-size: 18px;
-    line-height: 20px;
-    font-weight: 500;
-    color: #FFFFFF;
     background-color: darkgreen;
-    white-space: nowrap;
     border-radius: 8px;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 18px;
+    font-weight: 500;
+    height: 36px;
+    line-height: 20px;
+    padding: 0 10px;
+    white-space: nowrap;
   }
 
   &-delete-button {

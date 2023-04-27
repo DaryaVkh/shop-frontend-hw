@@ -35,7 +35,7 @@ export class CartComponent {
     this.mainService.changePage(AppPage.PRODUCT_LIST);
   }
 
-  changeRate(rate: CurrencyRate) {
+  public changeRate(rate: CurrencyRate) {
     this.rate$.next(rate);
   }
 }
