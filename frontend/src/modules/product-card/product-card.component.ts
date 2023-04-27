@@ -12,7 +12,6 @@ import { Product } from '../../shared/models';
 })
 export class ProductCardComponent implements OnDestroy {
   @Input() public product!: Product;
-  @Input() public count = 0;
 
   @Output() addedToCart = new EventEmitter<number>();
 

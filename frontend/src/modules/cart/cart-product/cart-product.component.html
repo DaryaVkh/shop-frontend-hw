@@ -6,7 +6,13 @@
     <span>×</span>
     <tui-input-number class="count-input" [formControl]="countControl" tuiTextfieldSize="s"></tui-input-number>
     <span>=</span>
-    <div class="cart-product-sum">{{sum$ | async}} $</div>
+    <div class="cart-product-sum">{{cartProduct.price * (countControl.value || 1)}} $</div>
   </div>
-  <button class="cart-product-delete-button" tuiIconButton size="s" icon="tuiIconTrash2" appearance="secondary-destructive"></button>
+  <button class="cart-product-delete-button"
+          tuiIconButton
+          size="s"
+          icon="tuiIconTrash2"
+          appearance="secondary-destructive"
+          (click)="deleteFromCart()">
+  </button>
 </div>

@@ -2,7 +2,6 @@
 <div class="products-container">
   <app-product-card *ngFor="let product of products$ | async"
                     [product]="product"
-                    [count]="getCartProductCount(product.id)"
                     (addedToCart)="addProductToCart(product, $event)">
   </app-product-card>
 </div>

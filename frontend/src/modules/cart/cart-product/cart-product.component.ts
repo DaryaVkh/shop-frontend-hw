@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { startWith, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { skip, Subject, takeUntil } from 'rxjs';
 import { CartProduct } from '../cart.models';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cart-product',
@@ -10,19 +10,33 @@ import { CartProduct } from '../cart.models';
   styleUrls: ['./cart-product.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CartProductComponent implements OnInit {
+export class CartProductComponent implements OnInit, OnDestroy {
   @Input() cartProduct!: CartProduct;
 
   public readonly countControl = this.fb.control(1);
 
-  public readonly sum$ = this.countControl.valueChanges.pipe(
-    startWith(1),
-    map((count) => (count || 1) * this.cartProduct.price)
-  );
+  private readonly destroy$ = new Subject<void>();
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(private readonly fb: FormBuilder,
+              private readonly cartService: CartService) {
+    this.countControl.valueChanges.pipe(
+      skip(1),
+      takeUntil(this.destroy$)
+    ).subscribe((count) => {
+      this.cartService.setCartCount(this.cartProduct, count ?? 0);
+    });
+  }
 
   public ngOnInit(): void {
     this.countControl.setValue(this.cartProduct.count);
+  }
+
+  public deleteFromCart(): void {
+    this.cartService.removeFromCart(this.cartProduct.id);
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

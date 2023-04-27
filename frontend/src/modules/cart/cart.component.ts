@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, QueryList, ViewChildren } from '@angular/core';
 import { AppPage } from '../main/main.models';
 import { MainService } from '../main/main.service';
 import { CartService } from './cart.service';
@@ -11,6 +11,8 @@ import { CartService } from './cart.service';
 })
 export class CartComponent {
   public readonly cartProducts = this.cartService.cart;
+
+  public readonly totalSum$ = this.cartService.totalSum$;
 
   constructor(private readonly mainService: MainService,
               private readonly cartService: CartService) {}

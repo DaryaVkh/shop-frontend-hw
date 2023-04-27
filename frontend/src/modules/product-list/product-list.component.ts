@@ -15,15 +15,7 @@ export class ProductListComponent {
   constructor(private readonly productsService: ProductsApiService,
               private readonly cartService: CartService) {}
 
-  public getCartProductCount(productId: number): number {
-    return this.cartService.getCartProductCount(productId);
-  }
-
   public addProductToCart(product: Product, count: number): void {
-    this.cartService.addToCart(product, count);
-  }
-
-  public decreaseProductCartCount(product: Product): void {
-    this.cartService.decreaseProductCartCount(product);
+    this.cartService.increaseCartCount(product, count);
   }
 }
