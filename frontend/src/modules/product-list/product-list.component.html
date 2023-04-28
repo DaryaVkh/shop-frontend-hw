@@ -1,7 +1,0 @@
-<h1 class="products-title">Products</h1>
-<div class="products-container">
-  <app-product-card *ngFor="let product of products$ | async"
-                    [product]="product"
-                    (addedToCart)="addProductToCart(product, $event)">
-  </app-product-card>
-</div>
