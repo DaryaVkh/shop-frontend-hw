@@ -4,7 +4,6 @@ import { ProductCardModule } from '../product-card/product-card.module';
 import { ProductListComponent } from './product-list.component';
 
 
-
 @NgModule({
   declarations: [
     ProductListComponent

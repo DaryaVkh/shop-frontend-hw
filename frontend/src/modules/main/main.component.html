@@ -2,21 +2,28 @@
   <span class="app-logo" (click)="changePage(appPageEnum.PRODUCT_LIST)">TUI Shop</span>
 
   <ng-container *ngIf="(page$ | async) === appPageEnum.PRODUCT_LIST">
-    <tui-badged-content
-        colorTop="var(--tui-error-fill)"
-        size="xs"
-        class="tui-space_right-5"
-        [contentTop]="cartCount$ | async"
-    >
-      <button
-          tuiIconButton
-          type="button"
-          appearance="whiteblock"
-          size="s"
-          icon="tuiIconShoppingCart"
-          (click)="changePage(appPageEnum.CART)"
-      ></button>
+    <tui-badged-content *ngIf="cartCount$ | async as cartCount; else cartButton"
+                        colorTop="var(--tui-error-fill)"
+                        size="xs"
+                        [contentTop]="cartCount">
+      <button tuiIconButton
+              type="button"
+              appearance="whiteblock"
+              size="s"
+              icon="tuiIconShoppingCart"
+              (click)="changePage(appPageEnum.CART)">
+      </button>
     </tui-badged-content>
+
+    <ng-template #cartButton>
+      <button tuiIconButton
+              type="button"
+              appearance="whiteblock"
+              size="s"
+              icon="tuiIconShoppingCart"
+              (click)="changePage(appPageEnum.CART)">
+      </button>
+    </ng-template>
   </ng-container>
 </header>
 
