@@ -1,0 +1,31 @@
+<form class="cart-form" [formGroup]="cartForm" (submit)="submit()">
+  <h2>Order form</h2>
+  <div class="tui-form__row">
+    <tui-input tuiTextfieldSize="s" formControlName="name">
+      Enter your name
+    </tui-input>
+    <tui-error *ngIf="nameError" [error]="nameError"></tui-error>
+  </div>
+  <div class="tui-form__row">
+    <tui-input tuiTextfieldSize="s" formControlName="email">
+      Enter your email
+    </tui-input>
+    <tui-error *ngIf="emailError" [error]="emailError"></tui-error>
+  </div>
+  <div class="tui-form__row">
+    <tui-input tuiTextfieldSize="s" formControlName="address">
+      Enter your address
+    </tui-input>
+    <tui-error *ngIf="addressError" [error]="addressError"></tui-error>
+  </div>
+  <div class="tui-form__row">
+    <tui-select tuiTextfieldSize="s"
+                formControlName="country">
+      <tui-data-list-wrapper *tuiDataList
+                             [items]="countriesForSelect$ | async">
+      </tui-data-list-wrapper>
+    </tui-select>
+    <tui-error *ngIf="countryError" [error]="countryError"></tui-error>
+  </div>
+  <button class="form-button" tuiButton size="s" type="submit">Order</button>
+</form>
